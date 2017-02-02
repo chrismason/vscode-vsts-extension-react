@@ -1,0 +1,30 @@
+{
+    "version": "0.1.0",
+    "command": "cmd",
+    "args": [
+        "/C"
+    ],
+    "isShellCommand": true,
+    "showOutput": "always",
+    "suppressTaskName": true,
+    "tasks": [
+        {
+            "taskName": "Run Dev",
+            "args": [
+                "npm run dev"
+            ]
+        },
+        {
+            "taskName": "Package Dev",
+            "args": [
+                "npm run package:dev"
+            ]
+        },
+        {
+            "taskName": "Package Release",
+            "args": [
+                "npm run package:release"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "vscode-vsts-extension-debug",
+  "private": true,
+  "version": "0.0.0",
+  "main": "webpack.config.js",
+  "scripts": {
+    "clean:vsix": "rimraf *.vsix",
+    "clean": "npm run clean:vsix && rimraf dist",
+    "dev": "webpack-dev-server --hot --progress --colors --https --port 3000",
+    "package:dev": "node ./scripts/packageDev",
+    "publish:dev": "npm run clean:vsix && npm run package:dev && node ./scripts/packageDev",
+    "build:release": "npm run clean && mkdir dist && webpack --progress --colors --config webpack.prod.config.js --output-path ./dist -p",
+    "package:release": "npm run build:release && node ./scripts/packageRelease",
+    "copy:libs": "cpx node_modules/vss-web-extension-sdk/lib/VSS.SDK.min.js libs",
+    "postinstall": "npm run copy:libs"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.0.1",
+    "cpx": "^1.5.0",
+    "css-loader": "^0.26.1",
+    "node-sass": "^4.4.0",
+    "rimraf": "^2.5.4",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "tfx-cli": "^0.3.45",
+    "ts-loader": "^2.0.0",
+    "tslint": "^4.4.2",
+    "tslint-loader": "^3.3.0",
+    "typescript": "^2.1.5",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "office-ui-fabric-react": "^1.3.4",
+    "q": "^1.4.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "vss-web-extension-sdk": "^2.109.1"
+  }
+}

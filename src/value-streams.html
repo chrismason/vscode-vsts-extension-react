@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF8">
+    <title>VSCode / VSTS Extension Debug</title>
+    <script src="../libs/VSS.SDK.min.js"></script>
+</head>
+
+<body>
+    <script>
+        VSS.init({
+            setupModuleLoader: true,
+            explicitNotifyLoaded: true,
+            usePlatformScripts: true,
+            usePlatformStyles: true,
+            moduleLoaderConfig: {
+                paths: {
+                    Scripts: 'scripts'
+                }
+            }
+        });
+
+        VSS.ready(function () {
+            require(["src/app"], function (app) {
+                app.init("demo-extension");
+                VSS.notifyLoadSucceeded();
+            });
+        });
+    </script>
+
+<div id="demo-extension" />
+</body>
+
+</html>

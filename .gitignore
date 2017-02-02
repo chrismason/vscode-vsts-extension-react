@@ -1,0 +1,15 @@
+node_modules/
+*.map
+*.vsix
+
+**/.tscache
+*.DS_Store
+
+dist/
+typings/
+libs/
+**/src/*.js
+**/src/*.js.map
+npm-debug.log
+
+**/out/chrome
