@@ -5,9 +5,9 @@ Small project to show building an end-to-end VSTS extension using React and [htt
 The idea behind this sample is to build a hub extension on the Work area of VSTS that would allow users to enter [http://www.scaledagileframework.com/value-streams](value streams) into VSTS. In this implementation, the value streams are mocks only and no data is being persisted to the backend databases. This is not meant for production use and is only intended to be used for illustrative purposes. This is also not meant to be the definitive example of how to build optimal React code. There are plenty of other examples out there that go into best practices around building React applications.
 
 # Getting started
-- Install VS Code from [https://code.visualstudio.com/](here)
-- Install the "Debugger for Chrome" extension from [https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome](here) 
-- Install NodeJS from [https://nodejs.org](here)
+- Install VS Code from [here](https://code.visualstudio.com/)
+- Install the "Debugger for Chrome" extension from [here](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+- Install NodeJS from [here](https://nodejs.org)
 - Clone this repository
 - Create a publisher at the [VSTS marketplace](https://marketplace.visualstudio.com/manage)
 - Insert your publisher ID in `configs/dev.json` and `configs/release.json`
