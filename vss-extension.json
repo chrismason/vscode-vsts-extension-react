@@ -56,7 +56,7 @@
         {
             "id": "vsts-value-streams-hub",
             "targets": [
-                "ms.vss-web.work-hub-group"
+                "ms.vss-work-web.work-hub-group"
             ],
             "type": "ms.vss-web.hub",
             "description": "Add and view value streams to a team project",

@@ -17,31 +17,27 @@ module.exports = {
     devtool: "inline-source-map",
     resolve: {
         extensions: [
-            "",
+            '*',
             ".webpack.js",
             ".web.js",
             ".ts",
             ".tsx",
-            ".js"],
-        root: [
-            path.resolve("./src")
-        ]
+            ".js"]
     },
     module: {
-        preLoaders: [
+        rules: [
             {
                 test: /\.tsx?$/,
-                loader: "tslint"
-            }
-        ],
-        loaders: [
+                loader: "tslint-loader",
+                enforce: "pre"
+            },
             {
                 test: /\.tsx?$/,
                 loader: "ts-loader"
             },
             {
                 test: /\.s?css$/,
-                loaders: ["style", "css", "sass"]
+                loaders: ["style-loader", "css-loader", "sass-loader"]
             }
         ]
     },
