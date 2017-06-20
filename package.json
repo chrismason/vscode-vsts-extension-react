@@ -8,7 +8,7 @@
     "clean": "npm run clean:vsix && rimraf dist",
     "dev": "webpack-dev-server --hot --progress --colors --https --port 3000",
     "package:dev": "node ./scripts/packageDev",
-    "publish:dev": "npm run clean:vsix && npm run package:dev && node ./scripts/packageDev",
+    "publish:dev": "npm run clean:vsix && npm run package:dev",
     "build:release": "npm run clean && mkdir dist && webpack --progress --colors --config webpack.prod.config.js --output-path ./dist -p",
     "package:release": "npm run build:release && node ./scripts/packageRelease",
     "copy:libs": "cpx node_modules/vss-web-extension-sdk/lib/VSS.SDK.min.js libs",
