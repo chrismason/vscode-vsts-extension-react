@@ -9,7 +9,7 @@ import { IValueStream, FormMode } from "../models/models";
 export interface IVSFormProps {
     currentStream: IValueStream;
     submitValueStream: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-    mode: FormMode;
+    mode: FormMode
 }
 
 export interface IVSFormState {
@@ -55,12 +55,13 @@ export class VSForm extends React.Component<IVSFormProps, IVSFormState> {
     private _onTitleChanged(text: string) {
         if (this.props.currentStream) {
             this.props.currentStream.title = text;
+            let valid = false;
             if (this.props.currentStream.title.length > 0) {
-                this.state.formValid = true;
+                valid = true;
             } else {
-                this.state.formValid = false;
+                valid = false;
             }
-            this.setState(this.state);
+            this.setState({ formValid: valid });
         }
     }
 
@@ -71,7 +72,7 @@ export class VSForm extends React.Component<IVSFormProps, IVSFormState> {
     }
 
     private _getRequiredFieldErrorMessage(value: string): string {
-        return value.length > 0 ? "" : "This field is required.";
+        return value.length > 0 ? "" : "This field is required."
     }
 
     private _getInitialState(): IVSFormState {

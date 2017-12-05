@@ -1,6 +1,6 @@
 {
     "manifestVersion": 1,
-    "id": "vsts-value-streams-extension",
+    "id": "vscode-vsts-extension-debug",
     "version": "0.0.0",
     "name": "Value Streams Example Development",
     "scopes": [
@@ -24,7 +24,7 @@
     ],
     "links": {
         "support": {
-            "uri": "https://github.com/masonch/vscode-vsts-extension-react"
+            "uri": "https://github.com/masonch/vscode-vsts-extension-debug"
         }
     },
     "branding": {
@@ -56,7 +56,7 @@
         {
             "id": "vsts-value-streams-hub",
             "targets": [
-                "ms.vss-work-web.work-hub-group"
+                "ms.vss-web.work-hub-group"
             ],
             "type": "ms.vss-web.hub",
             "description": "Add and view value streams to a team project",

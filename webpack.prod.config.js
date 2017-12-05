@@ -16,7 +16,6 @@ module.exports = {
     ],
     resolve: {
         extensions: [
-            '*',
             ".webpack.js",
             ".web.js",
             ".ts",
@@ -27,11 +26,6 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx?$/,
-                loader: "tslint-loader",
-                enforce: "pre"
-            },
-            {
-                test: /\.tsx?$/,
                 loader: "ts-loader"
             },
             {
@@ -40,10 +34,15 @@ module.exports = {
             }
         ]
     },
+    devServer: {
+        https: true
+    },
     plugins: [
         new CopyWebpackPlugin([
+            { from: "./node_modules/vss-web-extension-sdk/lib/VSS.SDK.min.js", to: "libs/VSS.SDK.min.js" },
+            { from: "./node_modules/es6-promise/dist/es6-promise.min.js", to: "libs/es6-promise.min.js" },
+            { from: "./node_modules/office-ui-fabric-react/dist/css/fabric.min.css", to: "libs/fabric.min.css" },
             { from: "./src/*.html", to: "./" },
-            { from: "./libs", to: "libs" },
             { from: "./marketplace", to: "marketplace" },
             { from: "./img", to: "img" },
             { from: "./vss-extension.json", to: "vss-extension.json" }

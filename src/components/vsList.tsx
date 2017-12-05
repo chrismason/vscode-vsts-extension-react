@@ -37,12 +37,12 @@ export class VSList extends React.Component<IVSListProps, IVSListState> {
 
     private _onRenderItemColumn(item: IValueStream, index: number, column: IColumn) {
         if (column.key === "title") {
-            return <Link data-selection-invoke={true}>{item[column.key]}</Link>;
+            return <Link data-selection-invoke={true}>{item[column.key]}</Link>
         }
         return item[column.key];
     }
 
     private _getInitialState(): IVSListState {
-        return {};
+        return {}
     }
 }

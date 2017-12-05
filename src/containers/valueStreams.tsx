@@ -11,6 +11,7 @@ import { VSList } from "../components/vsList";
 import { IValueStream, FormMode } from "../models/models";
 import { VSTSServices } from "../services/vstsServices";
 
+
 export interface IValueStreamsState {
     streams?: IValueStream[];
     activeStream: IValueStream;
@@ -38,12 +39,12 @@ export class ValueStreams extends React.Component<null, IValueStreamsState> {
                     <Spinner type={SpinnerType.large} />
                 </div>;
         } else if (this.state.currentMode === FormMode.CreateNew || this.state.currentMode === FormMode.Edit) {
-            content = <VSForm currentStream={this.state.activeStream} submitValueStream={this._onSubmitValueStream.bind(this)} mode={this.state.currentMode} />;
+            content = <VSForm currentStream={this.state.activeStream} submitValueStream={this._onSubmitValueStream.bind(this)} mode={this.state.currentMode} />
         } else {
             if (this.state.streams && this.state.streams.length > 0) {
-                content = <VSList streams={this.state.streams} editStream={this._onEditStream.bind(this)} />;
+                content = <VSList streams={this.state.streams} editStream={this._onEditStream.bind(this)} />
             } else {
-                content = <NoData createNewStream={this._onCreateNewStream.bind(this)} />;
+                content = <NoData createNewStream={this._onCreateNewStream.bind(this)} />
             }
         }
         return (
@@ -57,49 +58,56 @@ export class ValueStreams extends React.Component<null, IValueStreamsState> {
     }
 
     private _onEditStream(stream: IValueStream) {
-        this.state.activeStream = stream;
-        this.state.currentMode = FormMode.Edit;
-        this.setState(this.state);
+        this.setState({
+            activeStream: stream,
+            currentMode: FormMode.Edit
+        });
     }
 
     private _refreshData() {
-        this.state.isLoading = true;
         this.service.refreshvalueStreams().then(streams => {
-            this.state.streams = streams;
-            this.state.isLoading = false;
-            this.setState(this.state);
+            this.setState({
+                streams: streams,
+                isLoading: false
+            });
         });
-        this.setState(this.state);
+        this.setState({
+            isLoading: true
+        });
     }
 
     private _onSubmitValueStream(ev: React.MouseEvent<HTMLButtonElement>) {
         ev.preventDefault();
-        this.state.isLoading = true;
         if (this.state.currentMode === FormMode.CreateNew) {
             this.service.addValueStream(this.state.activeStream).then(streams => {
-                this.state.streams = streams;
-                this.state.isLoading = false;
-                this.setState(this.state);
+                this.setState({
+                    streams: streams,
+                    isLoading: false
+                });
             });
         } else if (this.state.currentMode === FormMode.Edit) {
             this.service.updateValueStream(this.state.activeStream).then(streams => {
-                this.state.streams = streams;
-                this.state.isLoading = false;
-                this.setState(this.state);
+                this.setState({
+                    streams: streams,
+                    isLoading: false
+                });
             });
         }
-        this.state.currentMode = FormMode.None;
-        this.setState(this.state);
+        this.setState({
+            isLoading: true,
+            currentMode: FormMode.None
+        });
     }
 
     private _onCreateNewStream(ev: React.MouseEvent<HTMLButtonElement>) {
-        this.state.currentMode = FormMode.CreateNew;
         ev.preventDefault();
-        this.state.activeStream = {
-            title: "",
-            description: ""
-        };
-        this.setState(this.state);
+        this.setState({
+            currentMode: FormMode.CreateNew,
+            activeStream: {
+                title: "",
+                description: ""
+            }
+        });
     }
 
     private _getInitialState(): IValueStreamsState {
